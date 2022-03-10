@@ -1,0 +1,82 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Dale Kowalskus - Teachers</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li>
+                    <a href="/">Index</a>
+                </li>
+                <li>
+                    <a href="./classes.html">Classes</a>
+                </li>
+                <li>
+                    <a href="./students.html">Students</a>
+                </li>
+                <li>
+                    <a href="./classesStudentsDetails.html">classesStudentDetails</a>
+                </li>
+                <li>
+                    <a href="./teachers.html">Teachers</a>
+                </li>
+                <li>
+                    <a href="./reviews.html">Reviews</a>
+                </li>
+            </ul>
+        </nav>
+        <div>
+            <h1>Teachers</h1>
+            <p>Display information about the Teachers</p>
+        </div>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th><u>teacherId</u></th>
+                        <th>firstName</th>
+                        <th>lastName</th>
+                        <th>email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for r in rows %}
+                    <tr>
+                      <td> {{ r.0 }}</td>
+                      <td> {{ r[1] }}</td>
+                      <td> {{ r[2] }}</td>
+                      <td> {{ r[3] }}</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+            </table>
+            <br>
+            <form action = "" method = 'GET'>
+                <fieldset>
+                    <legend>Search for a Teacher</legend>
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName">
+                    <br>
+                    <button name='searchButton' type='submit' value='searchButton'>Search</button>
+                </fieldset>     
+            </form>
+
+            <br>
+            <form action="" method="POST">
+                <fieldset>
+                    <legend>Add a New Teacher</legend>
+                    First Name: <input type="text" name="firstName">
+                    <br>
+                    Last Name: <input type="text" name="lastName">
+                    <br>
+                    Email: <input type="text" name="email">
+                    <br>
+                    <button type="submit" name="addButton" value="addButton">Add</button>
+                </fieldset>
+            </form>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,85 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Dale Kowalskus - Classes</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <script async src='/cdn-cgi/bm/cv/669835187/api.js'></script></head>
+    <body>
+        <nav>
+            <ul>
+                <li>
+                    <a href="/">Index</a>
+                </li>
+                <li>
+                    <a href="./classes.html">Classes</a>
+                </li>
+                <li>
+                    <a href="./students.html">Students</a>
+                </li>
+                <li>
+                    <a href="./classesStudentsDetails.html">classesStudentDetails</a>
+                </li>
+                <li>
+                    <a href="./teachers.html">Teachers</a>
+                </li>
+                <li>
+                    <a href="./reviews.html">Reviews</a>
+                </li>
+            </ul>
+        </nav>
+        <div>
+            <h1>Classes</h1>
+            <p>Display information about the Classes</p>
+            <p>A Class with NULL for teacherId indicates that the Class is not currently offered</p>
+        </div>
+        <div>
+            <table>
+                <thead>
+                    <th>classId</th>
+                    <th>teacherId</th>
+                    <th>Name</th>
+                </thead>
+                <tbody>
+                  {% for r in rows %}
+                  <tr>
+                    <td> {{ r.0 }}</td>
+                    <td> {{ r[1] }}</td>
+                    <td> {{ r[2] }}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+            </table>
+            <br>
+            <form action = '' method = 'POST'>
+                <fieldset>
+                    <legend>Add a New Class</legend>
+                    teacher: <select name="teacherId">
+                        <!-- display teachers in dropdown -->
+                        {% for t in teachers %}
+                            <option value="{{ t[0] }}">{{ t[2], t[1] }}</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+                    name: <input type="text" name="name">
+                    <br>
+                    <button type="submit" name="addButton" value="addButton">Add</button>
+                </fieldset>
+            </form>
+            <br>
+            <form action = '/classes.html' method = 'POST'>
+                <fieldset>
+                    <legend>Delete a Class</legend>
+                    Class: <select name="classId">
+                        <!-- display classes in dropdown -->
+                        {% for c in classes %}
+                            <option value="{{ c[0] }}">{{ c[2] }}</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+                    <button type="submit" name="deleteButton" value="delete">Delete</button>
+                </fieldset>
+            </form>
+        </div>
+    <script type="text/javascript">(function(){window['__CF$cv$params']={r:'6db95529ae5a8e69',m:'n5yPVDRKT6k5pRTewM_kVY9Pi2AwgXuMvtL3cjcnEdM-1644538001-0-AQzjFKb9/egTo5BlRtA8GYdg1cyWGrHzFQEzXHzzByVRROWLZOMg+TX6MbyFm1y2xBuKpCjMEmxzYJk/xlA+dgzzGpdW+YZ1HRsck7HLJcNUwLaj1oT+ttBXKIVMxf9sIlel7ZfL3glLRkiftbtLjeCmgsAGiD0LcE4LoW11qYS8PePL4EqIkC7BrFH3ungfWg==',s:[0x8f5d561bea,0x8f98fbb6b8],}})();</script></body>
+</html>

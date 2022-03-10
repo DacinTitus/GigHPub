@@ -1,0 +1,74 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Dale Kowalskus - Classes and Students Log</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">    <script async src='/cdn-cgi/bm/cv/669835187/api.js'></script></head>
+    <body>
+        <nav>
+            <ul>
+                <li>
+                    <a href="/">Index</a>
+                </li>
+                <li>
+                    <a href="./classes.html">Classes</a>
+                </li>
+                <li>
+                    <a href="./students.html">Students</a>
+                </li>
+                <li>
+                    <a href="./classesStudentsDetails.html">classesStudentDetails</a>
+                </li>
+                <li>
+                    <a href="./teachers.html">Teachers</a>
+                </li>
+                <li>
+                    <a href="./reviews.html">Reviews</a>
+                </li>
+            </ul>
+        </nav>
+        <div>
+            <h1>Classes and Students</h1>
+            <p>Display a M:M Relationship between Classes and Students</p>
+        </div>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>classId</th>
+                        <th>studentId</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for r in rows %}
+                    <tr>
+                      <td> {{ r.0 }}</td>
+                      <td> {{ r[1] }}</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+            </table>
+            <br>
+            <form action="" method="POST">
+                <fieldset>
+                    <legend>Add a New Student/Class Relationship</legend>
+                    <!-- Student: <input type="text" name="studentId">  -->
+                    Class: <select name="classId">
+                        {% for c in classes %}
+                            <option value="{{ c[0] }}">{{ c[2] }}</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+                    <!-- Teacher: <input type="text" name="teacherId"> -->
+                    Student: <select name="studentId">
+                        {% for s in students %}
+                            <option value="{{ s[0] }}">{{ s[2], s[1] }}</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+                    <button type="submit" name="addButton" value="addButton">Add</button>
+                </fieldset>
+        </div>
+    <script type="text/javascript">(function(){window['__CF$cv$params']={r:'6db2c6744fd3fd99',m:'W4ZV7ml.P.wnr8BCEvo.9xyobF7V4zz.BX1G6ebds6U-1644469241-0-AYcEO6RpXjmg+N/BJ/izVJFGcuAdCLMELLHNh2zHAHq+jKv87OPa2LgPVv2DnPro7ijY9LBfJPfI+7VK/nBFE6jan4wcye0QDxzC+QDU3Kdq5GUbqp90WmFcPbbN/f/ibtanv2vCTqIxDkoXKjRG/370jdTO3MFPVjmqQgatONiBrFaFCzQeFU996/NrnVQY9oIeO9u9zEHaXXtT8mQ+tqE=',s:[0xeb660911f4,0x8ae6a5f0a7],}})();</script></body>
+</html>
+           

@@ -1,0 +1,64 @@
+#indexPage {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+}
+
+#indexLink {
+    display: block;
+    color: purple;
+    padding: 5px 10px;
+    text-decoration: none;
+}
+
+#indexLink:hover {
+    background-color: rgb(99, 99, 99);
+    color: rgb(92, 168, 255);
+}
+
+li {
+    display: inline;
+    padding: 7px;
+}
+
+
+table, th, td {
+    border: 1px solid;
+}
+
+table {
+    width: 50%;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #cccccc;
+}
+
+tr:nth-child(even) {background-color: #ebebeb;}
+
+tr:hover {background-color: rgb(249, 253, 4)}
+
+label {
+    display: inline-block;
+    width: 100px;
+}
+
+
+
+input[type="text"] {
+    width: 35%;
+    padding: 7px;
+    resize: both;
+}
+
+input[type="number"] {
+    width: 35%;
+    padding: 7px;
+    resize: both;
+}
