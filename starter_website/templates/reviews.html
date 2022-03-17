@@ -61,11 +61,15 @@
                     <legend>Add a New Review</legend>
                     Year: <input type="text" name="year">
                     <br>
-                    Term: <input type="text" name="term">
+                    Term: <select type="text" name="term">
+                        <option value="Fall"> Fall</option>
+                        <option value="Winter"> Winter</option>
+                        <option value="Spring"> Spring</option>
+                        <option value="Summer"> Summer</option>
+                    </select>
                     <br>
                     <!-- Student: <input type="text" name="studentId">  -->
                     Student: <select name="studentId">
-                        display students in dropdown
                         {% for s in students %}
                             <option value="{{ s[0] }}">{{ s[2], s[1] }}</option>
                         {% endfor %}
@@ -81,29 +85,40 @@
                     <button type="submit" name="addButton" value="addButton">Add</button>
                 </fieldset>
             </form>
-            <form action>
-                <h3>Update existing review</h3>
-                <label for="reviewId">reviewId:</label>
-                <input type="number" id="reviewId">
-                <!-- <select name="reviewId" id="reviewId">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                </select> -->
-                <br>
-                <label for="reviewYear">Year:</label>
-                <input type="number" id="reviewYear">
-                <br>
-                <label for="reviewTerm">Term:</label>
-                <input type="text" id="reviewTerm">
-                <br>
-                <label for="studentId">studentId:</label>
-                <input type="number" id="studentId">
-                <br>
-                <label for="teacherId">teacherId:</label>
-                <input type="number" id="teacherId:">
-                <br>
-                <button>Submit</button>
+            <form action="" method="POST">
+                <fieldset>
+                    <legend>Update a Review by Associated ID</legend>
+                    Review ID: <select name="reviewId">
+                        {% for r in reviews %}
+                            <option value="{{ r[0] }}">{{ r[0] }}</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+                    Year: <input type="text" name="year">
+                    <br>
+                    Term: <select type="text" name="term">
+                        <option value="Fall"> Fall</option>
+                        <option value="Winter"> Winter</option>
+                        <option value="Spring"> Spring</option>
+                        <option value="Summer"> Summer</option>
+                    </select>
+                    <br>
+                    <!-- Student: <input type="text" name="studentId">  -->
+                    Student: <select name="studentId">
+                        {% for s in students %}
+                            <option value="{{ s[0] }}">{{ s[2], s[1] }}</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+                    <!-- Teacher: <input type="text" name="teacherId"> -->
+                    Teacher: <select name="teacherId">
+                        {% for t in teachers %}
+                            <option value="{{ t[0] }}">{{ t[2], t[1] }}</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+                    <button type="submit" name="updateButton" value="updateButton">Update</button>
+                </fieldset>
             </form>
         </div>
     </body>

@@ -4,7 +4,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Dale Kowalskus - Students</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
-    <script async src='/cdn-cgi/bm/cv/669835187/api.js'></script></head>
     <body>
         <nav>
             <ul>
@@ -58,15 +57,14 @@
                 <form action="" method="POST">
                     <fieldset>
                         <legend>Add a New Student</legend>
-                        First Name: <input type="text" name="firstName">
+                        First Name: <input type="text" name="firstName" required>
                         <br>
-                        Last Name: <input type="text" name="lastName">
+                        Last Name: <input type="text" name="lastName" required>
                         <br>
-                        Email: <input type="text" name="email">
+                        Email: <input type="email" name="email" required>
                         <br>
                         <button type="submit" name="addButton" value="addButton">Add</button>
                     </fieldset>
                 </form>
             </div>
-        <script type="text/javascript">(function(){window['__CF$cv$params']={r:'6db9554598c2fda9',m:'.n_GeyavZ.47MAlotHSv0n2ZbjLFsxCcVcxR.KnZ87k-1644538005-0-AZ3pCrR3pWSrbCcYCYTEVHigiK1DyHRbnWGUR3TE/gKWx08UpXCXzXjM5A3Pup1FNIcKjpfqYVy0oJG/tnVBo2kjJm92z/awqqtiYVR9sMlbVGH3mEwxaJZ+OtITNYan7Fg0xVAZmYbaNj2U/4Y3KvX6i6R1koyBtR+Db0BnM8G7zAyWwgLLSa5+fOntDgnviJsyTAlYvzzj16/IjTx7yiI=',s:[0x1f104c6800,0x8708a9a688],}})();</script></body>
     </html>

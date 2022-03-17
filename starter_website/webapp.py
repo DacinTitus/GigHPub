@@ -36,16 +36,20 @@ def classes():
 
     if request.method == 'POST' and 'addButton' in request.form:   # add class
         teacherId = request.form['teacherId']
+        print(teacherId)
         name = request.form['name']
-        data = (teacherId, name)
-        print(data)
-        query = 'INSERT into classes (teacherId, name) VALUES (%s, %s)'
+        if request.form['teacherId'] == 'NULL':
+            query = 'INSERT into classes (name) VALUES (%s)'
+            data = (name,)
+        else:
+            query = 'INSERT into classes (teacherId, name) VALUES (%s, %s)'
+            data = (teacherId, name)
         execute_query(db_connection, query, data)
         return redirect(url_for('classes'))
 
     if request.method == 'POST' and 'deleteButton' in request.form:   # delete class
         classId = request.form['classId']
-        data = (classId)
+        data = (classId,)
         query = 'DELETE from classes WHERE classId = %s'
         result = execute_query(db_connection, query, data)
         return redirect(url_for('classes'))
@@ -67,7 +71,7 @@ def teachers():
 
             else:   # filter by results
                 query = 'SELECT * FROM teachers WHERE lastName = %s'
-                data = (last_name)
+                data = (last_name,)
                 result = execute_query(db_connection, query, data).fetchall()
                 return render_template('teachers.html', rows = result)
 
@@ -107,7 +111,7 @@ def students():
         execute_query(db_connection, query, data)
         return redirect(url_for('students'))
         
-@webapp.route('/reviews.html', methods = ['POST', 'GET', 'PUT'])
+@webapp.route('/reviews.html', methods = ['POST', 'GET'])
 def reviews():
     print("Fetching and rendering teachers web page")
     db_connection = connect_to_database()
@@ -116,15 +120,18 @@ def reviews():
         query = 'SELECT * FROM reviews'
         result = execute_query(db_connection, query).fetchall()
 
+        review_query = 'SELECT * FROM reviews'
+        review_result = execute_query(db_connection, review_query).fetchall()
+
         teacher_query = 'SELECT * FROM teachers'
         teacher_result = execute_query(db_connection, teacher_query).fetchall()
 
         student_query = 'SELECT * FROM students'
         student_result = execute_query(db_connection, student_query).fetchall()
 
-        return render_template('reviews.html', rows=result, students=student_result, teachers=teacher_result)
+        return render_template('reviews.html', rows=result, reviews=review_result, students=student_result, teachers=teacher_result)
 
-    if request.method == 'POST':   # add new review
+    if request.method == 'POST' and 'addButton' in request.form:   # add new review
         year = request.form['year']
         term = request.form['term']
         student = request.form['studentId']
@@ -132,6 +139,18 @@ def reviews():
         data = (year, term, student, teacher)
         print(data)
         query = 'INSERT into reviews (reviewYear, reviewTerm, studentId, teacherId) VALUES (%s, %s, %s, %s)'
+        execute_query(db_connection, query, data)
+        return redirect(url_for('reviews'))
+
+    if request.method == 'POST' and 'updateButton' in request.form:   # update a review
+        review = request.form['reviewId']
+        year = request.form['year']
+        term = request.form['term']
+        student = request.form['studentId']
+        teacher = request.form['teacherId']
+        data = (year, term, student, teacher, review)
+        print(data)
+        query = 'UPDATE reviews SET reviewYear = %s, reviewTerm = %s, studentId = %s, teacherId = %s WHERE reviewId = %s'
         execute_query(db_connection, query, data)
         return redirect(url_for('reviews'))
 
