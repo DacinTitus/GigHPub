@@ -9,6 +9,6 @@
 from starter_website.webapp import webapp
 
 #then from the commandline run:
-#./venv/bin/activate
+#./venv/scripts/activate
 #gunicorn run:app -b 0.0.0.0:SOME_NUMBER_BETWEEN_1025_and_65535
 #eg. gunicorn run:app -b 0.0.0.0:8842

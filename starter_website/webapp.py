@@ -5,7 +5,8 @@ from db_connector.db_connector import connect_to_database, execute_query
 webapp = Flask(__name__)
 
 
-# source venv/bin/activate
+# source venv/scripts/activate.bat // in CMD
+# source venv/scripts/activate.ps1 // in powershell
 # export FLASK_APP=run.py
 # python -m flask run -h 0.0.0.0 -p 1909 --reload
 
