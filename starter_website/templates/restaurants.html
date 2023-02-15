@@ -1,0 +1,80 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>NCP - Restaurants</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    </head>
+    <body>
+        <nav>
+            <ul id="indexPage">
+                <li>
+                    <a id="indexLink" href="./restaurants.html">Restaurants</a>
+                </li>
+                <li>
+                    <a id="indexLink" href="./menu.html">Menu</a>
+                </li>
+                <li>
+                    <a id="indexLink" href="./employees.html">Employees</a>
+                </li>
+                <li>
+                    <a id="indexLink" href="./jobs.html">Jobs</a>
+                </li>
+                <li>
+                    <a id="indexLink" href="./employeesJobs.html">Employee Duties</a>
+                </li>
+            </ul>
+        </nav>
+        <div>
+            <h1>Restaurants</h1>
+            <p>Display information about the Restaurant Locations</p>
+            <!-- <p>A Class with None for teacherId indicates that the Class is not currently offered</p> -->
+        </div>
+        <div>
+            <table>
+                <thead>
+                    <th>restId</th>
+                    <th>name</th>
+                    <th>city</th>
+                    <th>state</th>
+                </thead>
+                <tbody>
+                  {% for r in rows %}
+                  <tr>
+                    <td> {{ r.0 }}</td>
+                    <td> {{ r[1] }}</td>
+                    <td> {{ r[2] }}</td>
+                    <td> {{ r[3] }}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+            </table>
+            <br>
+            <form action="" method="POST">
+                <fieldset>
+                    <legend>Add a New Restaurant</legend>
+                    Name: <input type="text" name="restName" required>
+                    <br>
+                    City: <input type="text" name="city" required>
+                    <br>
+                    State: <input type="text" name="state" required>
+                    <br>
+                    <button type="submit" name="addButton" value="addButton">Add</button>
+                </fieldset>
+            </form>
+            <br>
+            <form action = '/restaurants.html' method = 'POST'>
+                <fieldset>
+                    <legend>Delete a Restaurant</legend>
+                    Restaurant: <select name="restId" id="restId">
+                        <!-- display restaurants in dropdown -->
+                        {% for r in restaurants %}
+                            <option value="{{ r[0] }}">{{ r[1] }}</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+                    <button type="submit" name="deleteButton" value="deleteButton">Delete</button>
+                </fieldset>
+            </form>
+        </div>
+</html>
